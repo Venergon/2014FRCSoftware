@@ -14,21 +14,24 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DriveSubsystem extends Subsystem {
     RobotDrive driveTrain = new RobotDrive(1,2);
+    RobotDrive driveTrain2 = new RobotDrive(3,4);
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
     public void tankDrive (double leftSpeed, double rightSpeed){
         driveTrain.tankDrive(leftSpeed, rightSpeed);
+        driveTrain2.tankDrive(leftSpeed, rightSpeed);
         SmartDashboard.putNumber ("leftspeed", leftSpeed);
         SmartDashboard.putNumber ("rightspeed", rightSpeed);
     } 
     public void arcadeDrive (double speed, double turnRate){
-        System.out.println("the speed is" + speed 
-                + "the turn" + turnRate);
+       /* System.out.println("the speed is" + speed 
+                + ", the turn " + turnRate); */
         SmartDashboard.putNumber ("speed", speed);
         SmartDashboard.putNumber ("turn", turnRate);
         driveTrain.arcadeDrive(turnRate, speed);
+        driveTrain2.arcadeDrive(turnRate, speed);
     }
     public void stop (){
         driveTrain.drive(0.0f,0.0f);

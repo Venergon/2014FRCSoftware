@@ -5,8 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+    //"Compiler says no" Steph McAurther 2014
+    //"Compiler says no" Steph McArowell 2014
+    //"Compiler says no" Steph Rowell 2014
+    //"Compiler says no" Sir Auron 2014
+    //"Compiler says no" Sir Gauron 2014
+    //"Compiler says no" Sir Galen 2014
+
+
 package edu.wpi.first.wpilibj.templates;
 
+    //"Compiler says no" Steph McAurther 2014
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;

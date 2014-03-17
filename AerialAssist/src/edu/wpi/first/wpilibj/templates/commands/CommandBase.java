@@ -5,6 +5,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj.templates.subsystems.RevolutionLift;
+import edu.wpi.first.wpilibj.templates.subsystems.RevolutionWheel;
+
+//"Compiler says no" Sir Galen 2014
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -14,10 +18,18 @@ import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
  */
 public abstract class CommandBase extends Command {
 
+    //"Compiler says no" Steph McArowell 2014
+    
     public static OI oi;
     // Create a single static instance of all of your subsystems
     public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static DriveSubsystem driveSubsystem = new DriveSubsystem();
+    //public static ForkLift forkLift = new ForkLift();
+    //public static ForkLift2 forkLift2 = new ForkLift2();
+    public static RevolutionLift revolutionLift = new RevolutionLift();
+    public static RevolutionWheel revolutionWheel = new RevolutionWheel();
+    
+    //"Compiler says no" Sir Gauron 2014
     
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

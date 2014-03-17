@@ -10,24 +10,22 @@ import edu.wpi.first.wpilibj.Joystick;
  *
  * @author Segway
  */
-public class TwoStickArcadeCommand extends CommandBase {
-    Joystick speedJoystick;
-    Joystick turnJoystick;
-    public TwoStickArcadeCommand(Joystick speedStick, Joystick turnStick) {
+public class OneStickArcadeCommand extends CommandBase {
+    Joystick stick;
+    public OneStickArcadeCommand(Joystick stick) {
         requires (driveSubsystem);
-        this.speedJoystick = speedStick;
-        this.turnJoystick = turnStick;
+        this.stick = stick;
     }
 
 
     // Called just before this Command runs the first time
     protected void initialize() {
-      System.out.println("Switching to Two stick Arcade");
+      System.out.println("Switching to One stick Arcade");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveSubsystem.arcadeDrive(-speedJoystick.getX(), -turnJoystick.getY());
+        driveSubsystem.arcadeDrive(-stick.getX(), -stick.getY());
         
     }
 
