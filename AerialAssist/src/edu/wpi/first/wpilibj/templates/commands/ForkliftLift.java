@@ -22,9 +22,9 @@ public class ForkliftLift extends CommandBase {
     double shootHeight = 4.0;
     double threshold = 0.1;
     double target = loadHeight;
-    Joystick stick;
-    public ForkliftLift(Joystick stick) {
-            this.stick = stick;
+    double speed;
+    public ForkliftLift(double speed) {
+            this.speed = speed;
             requires (revolutionLift);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -63,13 +63,7 @@ public class ForkliftLift extends CommandBase {
             forkLift.lifterMove(0);
         }*/
 
-        if (stick.getRawButton(11)) {
-            revolutionLift.moveUp(1);
-        } else if (stick.getRawButton(10)) {
-            revolutionLift.moveDown(1);
-        } else {
-            revolutionLift.moveUp(0);
-        }
+        revolutionLift.moveUp(speed);
         
     }
 
@@ -85,5 +79,6 @@ public class ForkliftLift extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        revolutionLift.moveUp (0);
     }
 }

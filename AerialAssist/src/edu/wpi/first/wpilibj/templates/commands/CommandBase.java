@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj.templates.subsystems.KickerMechanism;
+import edu.wpi.first.wpilibj.templates.subsystems.MicroSwitches;
 import edu.wpi.first.wpilibj.templates.subsystems.RevolutionLift;
 import edu.wpi.first.wpilibj.templates.subsystems.RevolutionWheel;
 
@@ -28,6 +30,8 @@ public abstract class CommandBase extends Command {
     //public static ForkLift2 forkLift2 = new ForkLift2();
     public static RevolutionLift revolutionLift = new RevolutionLift();
     public static RevolutionWheel revolutionWheel = new RevolutionWheel();
+    public static KickerMechanism kickerMechanism = new KickerMechanism();
+    public static MicroSwitches microSwitches = new MicroSwitches();
     
     //"Compiler says no" Sir Gauron 2014
     

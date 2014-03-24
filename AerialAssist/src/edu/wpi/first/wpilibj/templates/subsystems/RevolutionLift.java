@@ -24,12 +24,12 @@ public class RevolutionLift extends Subsystem {
     
         //"Compiler says no" Sir Auron 2014
     
-    public void moveUp(int speed) {
+    public void moveUp(double speed) {
         armLeft.set(speed);
         armRight.set(speed);
     }
     
-    public void moveDown(int speed) {
+    public void moveDown(double speed) {
         armLeft.set(-speed);
         armRight.set(-speed);
     }
