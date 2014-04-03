@@ -5,6 +5,7 @@
  */
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -13,7 +14,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author FRC
  */
 public class KickerMechanism extends Subsystem {
-    Talon kicker = new Talon (8);
+    Talon kicker1 = new Talon (8); 
+    Talon kicker2 = new Talon (9);
+    DigitalInput bottomSwitch = new DigitalInput (1);
+    DigitalInput topSwitch = new DigitalInput (2);
+    
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -22,7 +27,19 @@ public class KickerMechanism extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void kick(double speed){
-        kicker.set (speed);
+        kicker1.set (speed);
+        kicker2.set (speed);
     }
     
+   
+    public boolean isBottomSwitchSet (){
+        System.out.print("Bottom switch is ");
+        System.out.println(bottomSwitch.get());
+        return bottomSwitch.get();
+    }
+    public boolean isTopSwitchSet () {
+        System.out.print("Top switch is ");
+        System.out.println(topSwitch.get());
+        return topSwitch.get();
+    }
 }

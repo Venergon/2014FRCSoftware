@@ -21,7 +21,7 @@ public class OI {
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
-    // number it is.
+     // number it is.
     Joystick stickLeft = new Joystick(1);
     Joystick stickRight = new Joystick(2);
     Button button1 = new JoystickButton(stickLeft, 1);
@@ -45,7 +45,7 @@ public class OI {
         //button6.whenPressed(());
         //button7.whenPressed(());
         //button8.whenPressed(());
-        button9.whenPressed(new KickerKick(stickLeft));
+        button9.whileHeld(new KickerKick(stickLeft));
         button10.whileHeld(new ForkliftLift(1));
         button11.whileHeld(new ForkliftLift(-1));
     }

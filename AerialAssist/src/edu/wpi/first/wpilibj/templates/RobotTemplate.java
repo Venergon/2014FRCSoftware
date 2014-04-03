@@ -43,7 +43,7 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        System.out.println("The Revolution is going on");
+        System.out.println("Initialisation complete");
         autonomousCommand = new ExampleCommand();
 
         // Initialize all subsystems
