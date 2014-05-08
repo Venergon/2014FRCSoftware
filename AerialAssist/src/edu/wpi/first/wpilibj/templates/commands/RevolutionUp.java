@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.subsystems.RevolutionLift;
 
 //"Compiler says no" Steph McAurther 2014
@@ -16,15 +17,15 @@ import edu.wpi.first.wpilibj.templates.subsystems.RevolutionLift;
  *
  * @author Segway
  */
-public class ForkliftLift extends CommandBase {
+public class RevolutionUp extends CommandBase {
 
     double loadHeight = 1.5;
     double shootHeight = 4.0;
     double threshold = 0.1;
     double target = loadHeight;
-    double speed;
-    public ForkliftLift(double speed) {
-            this.speed = speed;
+    Joystick stick;
+    public RevolutionUp(Joystick stick) {
+            this.stick = stick;
             requires (revolutionLift);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -37,13 +38,13 @@ public class ForkliftLift extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        /*double liftVoltage = revolutionLift.getAngle();
+        double liftVoltage = revolutionLift.getAngle();
         //if (liftVoltage > 0) {
             System.out.println("Forklift wanted is " + stick.getZ() + 
-                ". Forklift is currently at " + liftVoltage);*/
+                ". Forklift is currently at " + liftVoltage);
         //}
         
-        /*if (stick.getRawButton(10)) {
+        if (stick.getRawButton(10)) {
             target = loadHeight;
             target += stick.getZ();
         } else if (stick.getRawButton(11)) {
@@ -53,17 +54,18 @@ public class ForkliftLift extends CommandBase {
              
         if (liftVoltage > target + threshold) {
             // Go down
-            forkLift.lifterMove(-1);
+            revolutionLift.moveDown(1);
             System.out.println("Going Down. Target: " + target);
+            SmartDashboard.putNumber("Revolution target", target);
         } else if (liftVoltage < target - threshold) {
             System.out.println("Going Up. Target: " + target);
             // Go up
-            forkLift.lifterMove(1);
+            revolutionLift.moveUp(1);
         } else {
-            forkLift.lifterMove(0);
-        }*/
+            revolutionLift.moveUp(0);
+        }
 
-        revolutionLift.moveUp(speed);
+        //revolutionLift.moveUp(speed);
         
     }
 

@@ -30,7 +30,10 @@ public class KickerMechanism extends Subsystem {
         kicker1.set (speed);
         kicker2.set (speed);
     }
-    
+    public void liftUp(double speed){
+        kicker1.set (-speed);
+        kicker2.set (-speed);
+    }
    
     public boolean isBottomSwitchSet (){
         System.out.print("Bottom switch is ");

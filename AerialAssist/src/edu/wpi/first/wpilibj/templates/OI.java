@@ -6,12 +6,15 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.ArcadeCommand;
-import edu.wpi.first.wpilibj.templates.commands.ForkliftLift;
+import edu.wpi.first.wpilibj.templates.commands.RevolutionUp;
+import edu.wpi.first.wpilibj.templates.commands.HolderMove;
 import edu.wpi.first.wpilibj.templates.commands.InBallinCommand;
 import edu.wpi.first.wpilibj.templates.commands.KickerKick;
 import edu.wpi.first.wpilibj.templates.commands.OneStickArcadeCommand;
 import edu.wpi.first.wpilibj.templates.commands.TankCommand;
+import edu.wpi.first.wpilibj.templates.commands.TurnToTarget;
 import edu.wpi.first.wpilibj.templates.commands.TwoStickArcadeCommand;
+import edu.wpi.first.wpilibj.templates.subsystems.BallHolder;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -38,16 +41,16 @@ public class OI {
     
     public OI () {
         button1.whileHeld(new InBallinCommand(stickLeft));
-        //button2.whenPressed(());
+        button2.whileHeld(new TurnToTarget(stickLeft));
         button3.whenPressed(new TankCommand (stickLeft, stickRight));
         button4.whenPressed(new OneStickArcadeCommand(stickLeft));
         button5.whenPressed(new TwoStickArcadeCommand(stickLeft, stickRight));
-        //button6.whenPressed(());
-        //button7.whenPressed(());
+        button6.whileHeld(new HolderMove(stickLeft));
+        button7.whileHeld(new HolderMove(stickLeft));
         //button8.whenPressed(());
         button9.whileHeld(new KickerKick(stickLeft));
-        button10.whileHeld(new ForkliftLift(1));
-        button11.whileHeld(new ForkliftLift(-1));
+        button10.whileHeld(new RevolutionUp(stickLeft));
+        button11.whileHeld(new RevolutionUp(stickLeft));
     }
     // Another type of button you can create is a DigitalIOButton, which is
     // a button or switch hooked up to the cypress module. These are useful if

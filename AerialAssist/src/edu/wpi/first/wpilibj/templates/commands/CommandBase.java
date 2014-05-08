@@ -3,6 +3,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.OI;
+import edu.wpi.first.wpilibj.templates.subsystems.BallHolder;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.templates.subsystems.KickerMechanism;
@@ -30,6 +31,8 @@ public abstract class CommandBase extends Command {
     public static RevolutionLift revolutionLift = new RevolutionLift();
     public static RevolutionWheel revolutionWheel = new RevolutionWheel();
     public static KickerMechanism kickerMechanism = new KickerMechanism();
+    public static NetworkTableUse networkTableUse = new NetworkTableUse();
+    public static BallHolder ballHolder = new BallHolder ();
     //"Compiler says no" Sir Gauron 2014
     
     public static void init() {
