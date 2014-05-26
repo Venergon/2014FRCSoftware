@@ -15,8 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author FRC
  */
 public class RevolutionLift extends Subsystem {
-    Talon armLeft = new Talon(5);
-    Talon armRight = new Talon(6);
+    Talon arm = new Talon(9);
     protected void initDefaultCommand() {
         //throw new java.lang.UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         
@@ -25,18 +24,15 @@ public class RevolutionLift extends Subsystem {
         //"Compiler says no" Sir Auron 2014
     
     public void moveUp(double speed) {
-        armLeft.set(speed);
-        armRight.set(speed);
+        arm.set(speed);
     }
     
     public void moveDown(double speed) {
-        armLeft.set(-speed);
-        armRight.set(-speed);
+        arm.set(-speed);
     }
 
     public void armStop() {
-        armLeft.set(0);
-        armRight.set(0);
+        arm.set(0);
     }
 
 }

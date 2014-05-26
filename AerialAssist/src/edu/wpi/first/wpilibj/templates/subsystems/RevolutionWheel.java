@@ -6,7 +6,7 @@
 
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author FRC
  */
 public class RevolutionWheel extends Subsystem {
-    Victor armWheels = new Victor (7);
+    Talon armWheels = new Talon (6);
     
     public void intakeIn(double speed) {
         armWheels.set(speed);

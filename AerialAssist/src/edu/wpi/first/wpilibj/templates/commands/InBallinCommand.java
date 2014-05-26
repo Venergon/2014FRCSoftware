@@ -17,9 +17,11 @@ import edu.wpi.first.wpilibj.Joystick;
 public class InBallinCommand extends CommandBase {
 
     Joystick stick;
-    public InBallinCommand(Joystick stick){
+    Joystick stick2;
+    public InBallinCommand(Joystick stick, Joystick stick2){
         requires(revolutionWheel);
         this.stick = stick;
+        this.stick2 = stick2;
     }
     
     protected void initialize() {
@@ -29,8 +31,10 @@ public class InBallinCommand extends CommandBase {
     protected void execute() {
         if (stick.getRawButton(1)) {
             revolutionWheel.intakeIn(1);
+        } else if (stick2.getRawButton(1)){
+            revolutionWheel.intakeOut (1);
         } else {
-            revolutionWheel.intakeIn (0);
+            revolutionWheel.intakeIn(0);
         }
     }
 

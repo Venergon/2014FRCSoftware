@@ -38,10 +38,23 @@ public class OI {
     Button button9 = new JoystickButton(stickLeft, 9);
     Button button10 = new JoystickButton(stickLeft, 10);
     Button button11 = new JoystickButton(stickLeft, 11);
+    Button rightButton1 = new JoystickButton(stickRight, 1);
+    Button rightButton2 = new JoystickButton(stickRight, 2);
+    Button rightButton3 = new JoystickButton(stickRight, 3);
+    Button rightButton4 = new JoystickButton(stickRight, 4);
+    Button rightButton5 = new JoystickButton(stickRight, 5);
+    Button rightButton6 = new JoystickButton(stickRight, 6);
+    Button rightButton7 = new JoystickButton(stickRight, 7);
+    Button rightButton8 = new JoystickButton(stickRight, 8);
+    Button rightButton9 = new JoystickButton(stickRight, 9);
+    Button rightButton10 = new JoystickButton(stickRight, 10);
+    Button rightButton11 = new JoystickButton(stickRight, 11);
+    
+    
     
     public OI () {
-        button1.whileHeld(new InBallinCommand(stickLeft));
-        button2.whileHeld(new TurnToTarget(stickLeft));
+        button1.whileHeld(new InBallinCommand(stickLeft, stickRight));
+        //button2.whileHeld(new TurnToTarget(stickLeft));
         button3.whenPressed(new TankCommand (stickLeft, stickRight));
         button4.whenPressed(new OneStickArcadeCommand(stickLeft));
         button5.whenPressed(new TwoStickArcadeCommand(stickLeft, stickRight));
@@ -51,6 +64,17 @@ public class OI {
         button9.whileHeld(new KickerKick(stickLeft));
         button10.whileHeld(new RevolutionUp(stickLeft));
         button11.whileHeld(new RevolutionUp(stickLeft));
+        rightButton1.whileHeld(new InBallinCommand (stickLeft, stickRight));
+        //rightButton2.whenPressed(());
+        //rightButton3.whenPressed(());
+        //rightButton4.whenPressed(());
+        //rightButton5.whenPressed(());
+        //rightButton6.whenPressed(());
+        //rightButton7.whenPressed(());
+        //rightButton8.whenPressed(());
+        //rightButton9.whenPressed(());
+        //rightButton10.whenPressed(());
+        //rightButton11.whenPressed(());
     }
     // Another type of button you can create is a DigitalIOButton, which is
     // a button or switch hooked up to the cypress module. These are useful if

@@ -26,9 +26,9 @@ public class HolderMove extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if (stick.getRawButton(6)){
-            ballHolder.moveUp(.4);
+            ballHolder.moveUp(1);
         } else if (stick.getRawButton (7)){
-            ballHolder.moveDown(.4);
+            ballHolder.moveDown(1);
         }
     }
 
@@ -44,5 +44,6 @@ public class HolderMove extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        ballHolder.moveUp(0);
     }
 }

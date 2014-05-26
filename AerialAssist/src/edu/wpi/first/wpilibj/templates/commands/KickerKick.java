@@ -32,7 +32,7 @@ public class KickerKick extends CommandBase {
     protected void initialize() {
         System.out.println("Kicker started");
         SmartDashboard.putNumber("Kicker State", state);
-        state = 1;
+        state = 2;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -53,9 +53,9 @@ public class KickerKick extends CommandBase {
                 timer.reset();
                 timer.start();
             }
-            kickerMechanism.liftUp(0.8);
+            kickerMechanism.liftUp(0.5);
         } else if (state == 3) {
-                System.out.println(timer.get());
+            System.out.println(timer.get());
             if (timer.get() > 0.5) {
                 state = 4;
                 System.out.println("State 4");
@@ -97,7 +97,7 @@ public class KickerKick extends CommandBase {
     // Called once after isFinished returns true
     protected void end() {
         kickerMechanism.kick(0);
-        state = 1;
+        state = 2;
         SmartDashboard.putNumber("Kicker State",state);
         System.out.println("Kicker sequence complete");
     }
@@ -108,7 +108,7 @@ public class KickerKick extends CommandBase {
         kickerMechanism.kick(0);
         timer.stop();
         timer.reset();
-        state = 1;
+        state = 2;
         System.out.println("Kicker Interrupted");
     }
 }

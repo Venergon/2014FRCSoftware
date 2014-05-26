@@ -14,10 +14,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author FRC
  */
 public class KickerMechanism extends Subsystem {
-    Talon kicker1 = new Talon (8); 
-    Talon kicker2 = new Talon (9);
-    DigitalInput bottomSwitch = new DigitalInput (1);
-    DigitalInput topSwitch = new DigitalInput (2);
+    Talon kicker1 = new Talon (7); 
+    Talon kicker2 = new Talon (8);
+    DigitalInput bottomSwitch = new DigitalInput (11);
+    DigitalInput topSwitch = new DigitalInput (4);
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -27,12 +27,12 @@ public class KickerMechanism extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void kick(double speed){
-        kicker1.set (speed);
-        kicker2.set (speed);
-    }
-    public void liftUp(double speed){
         kicker1.set (-speed);
         kicker2.set (-speed);
+    }
+    public void liftUp(double speed){
+        kicker1.set (speed);
+        kicker2.set (speed);
     }
    
     public boolean isBottomSwitchSet (){

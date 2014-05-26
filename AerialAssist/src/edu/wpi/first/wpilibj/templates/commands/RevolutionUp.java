@@ -38,9 +38,9 @@ public class RevolutionUp extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double liftVoltage = revolutionLift.getAngle();
+        //double liftVoltage = revolutionLift.getAngle();
         //if (liftVoltage > 0) {
-            System.out.println("Forklift wanted is " + stick.getZ() + 
+        /*    System.out.println("Forklift wanted is " + stick.getZ() + 
                 ". Forklift is currently at " + liftVoltage);
         //}
         
@@ -64,9 +64,13 @@ public class RevolutionUp extends CommandBase {
         } else {
             revolutionLift.moveUp(0);
         }
-
+        */
         //revolutionLift.moveUp(speed);
-        
+        if (stick.getRawButton(10)){
+            revolutionLift.moveDown(1);
+        } else if (stick.getRawButton(11)){
+            revolutionLift.moveUp(1);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
