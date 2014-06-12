@@ -8,21 +8,16 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 /**
  *
  * @author FRC
  */
-public class KickerKick extends CommandBase {
-    Joystick stick;
-    double speed;
-    int state = 2;
+public class AutoCommand extends CommandBase {
     Timer timer;
+    int state = 2;
     
-    
-    public KickerKick(double speed) {
+    public AutoCommand() {
         requires (kickerMechanism);
-        this.speed = speed;
         timer = new Timer();
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -30,21 +25,28 @@ public class KickerKick extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.println("Kicker started");
-        SmartDashboard.putNumber("Kicker State", state);
+        timer.reset();
+        timer.start();
         state = 2;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (state == 1) { //Gain momentum so that the hammer can swing up to the top
+        while((timer.get() < 6) && ((networkTableUse.shapeXAxis() < 250) || (networkTableUse.shapeXAxis() > 350)) ){
+            
+        }
+        /*while (kickerMechanism.isBottomSwitchSet() == false) {
+            kickerMechanism.kick(.25);
+        }*/
+        while (state == 1) { //Gain momentum so that the hammer can swing up to the top
             if (kickerMechanism.isBottomSwitchSet()== true) {
                 state = 2; 
                 System.out.println("State 2");
                 SmartDashboard.putNumber("Kicker State", state);
             }
             kickerMechanism.kick(0.4);
-        } else if (state == 2) { //Reverse the hammer to take it up to the top
+        } 
+        while (state == 2) { //Reverse the hammer to take it up to the top
             if (kickerMechanism.isTopSwitchSet()== true) {
                 state = 3;
                 System.out.println("State 3");
@@ -53,7 +55,8 @@ public class KickerKick extends CommandBase {
                 timer.start();
             }
             kickerMechanism.liftUp(0.5);
-        } else if (state == 3) {
+        }
+        while (state == 3) {
             System.out.println(timer.get());
             if (timer.get() > 0.5) {
                 state = 4;
@@ -61,7 +64,8 @@ public class KickerKick extends CommandBase {
                 SmartDashboard.putNumber("Kicker State", state);
             }
             kickerMechanism.kick(0);
-        } else if (state == 4) { // Main kick, swing the hammer to hit the ball
+        }
+        while (state == 4) { // Main kick, swing the hammer to hit the ball
             if (kickerMechanism.isBottomSwitchSet()== true) {
                 timer.reset();
                 timer.start();
@@ -70,7 +74,8 @@ public class KickerKick extends CommandBase {
                 SmartDashboard.putNumber("Kicker State", state);
             }
             kickerMechanism.kick(1);
-        } else if (state == 5) { //The follow through
+        }
+        while (state == 5) { //The follow through
             System.out.println(timer.get());
             if (timer.get() > 0.75) {
                 state = 6; 
@@ -78,36 +83,26 @@ public class KickerKick extends CommandBase {
                 SmartDashboard.putNumber("Kicker State", state);
             }
             kickerMechanism.kick(0);
-        } else { //Finishing the kick and letting the hammer drop down to neutral position
-            kickerMechanism.kick(0);
         }
-        
-        /*while (microSwitches.isBottomSwitchSet()== false) {
-            kickerMechanism.kick(-speed);
-        } while (microSwitches.isTopSwitchSet() == false){
-            kickerMechanism.kick(speed);
-        */
+        kickerMechanism.kick(0);
+        timer.reset();
+        timer.start();
+        while(timer.get() < 2) {
+            driveSubsystem.tankDrive (1,1);
+        }
     }
+
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (state == 6);
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        kickerMechanism.kick(0);
-        state = 2;
-        SmartDashboard.putNumber("Kicker State",state);
-        System.out.println("Kicker sequence complete");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
-        kickerMechanism.kick(0);
-        timer.stop();
-        timer.reset();
-        state = 2;
-        System.out.println("Kicker Interrupted");
+    protected void interrupted() {  
     }
 }

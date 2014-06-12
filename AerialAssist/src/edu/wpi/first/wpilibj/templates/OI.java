@@ -25,56 +25,69 @@ public class OI {
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
      // number it is.
-    Joystick stickLeft = new Joystick(1);
-    Joystick stickRight = new Joystick(2);
-    Button button1 = new JoystickButton(stickLeft, 1);
-    Button button2 = new JoystickButton(stickLeft, 2);
-    Button button3 = new JoystickButton(stickLeft, 3);
-    Button button4 = new JoystickButton(stickLeft, 4);
-    Button button5 = new JoystickButton(stickLeft, 5);
-    Button button6 = new JoystickButton(stickLeft, 6);
-    Button button7 = new JoystickButton(stickLeft, 7);
-    Button button8 = new JoystickButton(stickLeft, 8);
-    Button button9 = new JoystickButton(stickLeft, 9);
-    Button button10 = new JoystickButton(stickLeft, 10);
-    Button button11 = new JoystickButton(stickLeft, 11);
-    Button rightButton1 = new JoystickButton(stickRight, 1);
-    Button rightButton2 = new JoystickButton(stickRight, 2);
-    Button rightButton3 = new JoystickButton(stickRight, 3);
-    Button rightButton4 = new JoystickButton(stickRight, 4);
-    Button rightButton5 = new JoystickButton(stickRight, 5);
-    Button rightButton6 = new JoystickButton(stickRight, 6);
-    Button rightButton7 = new JoystickButton(stickRight, 7);
-    Button rightButton8 = new JoystickButton(stickRight, 8);
-    Button rightButton9 = new JoystickButton(stickRight, 9);
+    Joystick stickLeft   = new Joystick(1);
+    Joystick stickRight  = new Joystick(2);
+    Joystick xbox        = new Joystick(3);
+    Button button1       = new JoystickButton(stickLeft,  1);
+    Button button2       = new JoystickButton(stickLeft,  2);
+    Button button3       = new JoystickButton(stickLeft,  3);
+    Button button4       = new JoystickButton(stickLeft,  4);
+    Button button5       = new JoystickButton(stickLeft,  5);
+    Button button6       = new JoystickButton(stickLeft,  6);
+    Button button7       = new JoystickButton(stickLeft,  7);
+    Button button8       = new JoystickButton(stickLeft,  8);
+    Button button9       = new JoystickButton(stickLeft,  9);
+    Button button10      = new JoystickButton(stickLeft,  10);
+    Button button11      = new JoystickButton(stickLeft,  11);
+    Button rightButton1  = new JoystickButton(stickRight, 1);
+    Button rightButton2  = new JoystickButton(stickRight, 2);
+    Button rightButton3  = new JoystickButton(stickRight, 3);
+    Button rightButton4  = new JoystickButton(stickRight, 4);
+    Button rightButton5  = new JoystickButton(stickRight, 5);
+    Button rightButton6  = new JoystickButton(stickRight, 6);
+    Button rightButton7  = new JoystickButton(stickRight, 7);
+    Button rightButton8  = new JoystickButton(stickRight, 8);
+    Button rightButton9  = new JoystickButton(stickRight, 9);
     Button rightButton10 = new JoystickButton(stickRight, 10);
     Button rightButton11 = new JoystickButton(stickRight, 11);
+    Button a             = new JoystickButton(xbox,       1);
+    Button b             = new JoystickButton(xbox,       2);
+    Button x             = new JoystickButton(xbox,       3);
+    Button y             = new JoystickButton(xbox,       4);
+    Button lb            = new JoystickButton(xbox,       5);
+    Button rb            = new JoystickButton(xbox,       6);
     
     
     
     public OI () {
         button1.whileHeld(new InBallinCommand(stickLeft, stickRight));
-        //button2.whileHeld(new TurnToTarget(stickLeft));
+        button2.whileHeld(new KickerKick(stickLeft.getZ()/4));
         button3.whenPressed(new TankCommand (stickLeft, stickRight));
         button4.whenPressed(new OneStickArcadeCommand(stickLeft));
         button5.whenPressed(new TwoStickArcadeCommand(stickLeft, stickRight));
-        button6.whileHeld(new HolderMove(stickLeft));
-        button7.whileHeld(new HolderMove(stickLeft));
+        //button6.whileHeld();
+        //button7.whileHeld();
         //button8.whenPressed(());
-        button9.whileHeld(new KickerKick(stickLeft));
-        button10.whileHeld(new RevolutionUp(stickLeft));
-        button11.whileHeld(new RevolutionUp(stickLeft));
+        button9.whileHeld(new TurnToTarget(stickLeft));
+        //button10.whileHeld();
+        //button11.whileHeld();
         rightButton1.whileHeld(new InBallinCommand (stickLeft, stickRight));
-        //rightButton2.whenPressed(());
-        //rightButton3.whenPressed(());
-        //rightButton4.whenPressed(());
-        //rightButton5.whenPressed(());
-        //rightButton6.whenPressed(());
-        //rightButton7.whenPressed(());
+        rightButton2.whenPressed(new RevolutionUp(stickRight));
+        rightButton3.whenPressed(new RevolutionUp(stickRight));
+        rightButton4.whenPressed(new HolderMove(stickRight));
+        rightButton5.whenPressed(new HolderMove(stickRight));
+        //rightButton6.whenPressed();
+        //rightButton7.whenPressed();
         //rightButton8.whenPressed(());
         //rightButton9.whenPressed(());
         //rightButton10.whenPressed(());
         //rightButton11.whenPressed(());
+        //a.whenPressed(());
+        //b.whenPressed(());
+        //x.whenPressed(());
+        //y.whenPressed(());
+        //lb.whenPressed(());
+        //rb.whenPressed(());
     }
     // Another type of button you can create is a DigitalIOButton, which is
     // a button or switch hooked up to the cypress module. These are useful if

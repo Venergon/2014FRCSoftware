@@ -25,7 +25,7 @@ public class TurnToTarget extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (stick.getRawButton(2)) {
+        if (stick.getRawButton(9)) {
             if (networkTableUse.shapeXAxis() > 350) {
             driveSubsystem.arcadeDrive(0, 0.5);
             } else if (networkTableUse.shapeXAxis() < 250) {

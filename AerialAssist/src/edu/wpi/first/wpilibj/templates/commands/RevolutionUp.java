@@ -66,9 +66,9 @@ public class RevolutionUp extends CommandBase {
         }
         */
         //revolutionLift.moveUp(speed);
-        if (stick.getRawButton(10)){
+        if (stick.getRawButton(3)){
             revolutionLift.moveDown(1);
-        } else if (stick.getRawButton(11)){
+        } else if (stick.getRawButton(2)){
             revolutionLift.moveUp(1);
         }
     }
