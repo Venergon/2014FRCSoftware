@@ -5,6 +5,7 @@
  */
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class BallHolder extends Subsystem {
     Talon holder = new Talon (10);
+    AnalogChannel holdPot = new AnalogChannel (2);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -21,7 +23,7 @@ public class BallHolder extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-      public void moveUp(double speed){
+    public void moveUp(double speed){
         holder.set (speed);
         
     }
@@ -29,4 +31,8 @@ public class BallHolder extends Subsystem {
         holder.set (-speed);
         
     }
+    public double getAngle() {
+        return holdPot.getVoltage();
+    }
+
 }

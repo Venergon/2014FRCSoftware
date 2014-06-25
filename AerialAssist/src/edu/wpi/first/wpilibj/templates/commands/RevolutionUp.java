@@ -38,39 +38,39 @@ public class RevolutionUp extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //double liftVoltage = revolutionLift.getAngle();
-        //if (liftVoltage > 0) {
-        /*    System.out.println("Forklift wanted is " + stick.getZ() + 
-                ". Forklift is currently at " + liftVoltage);
+        double revPotVoltage = revolutionLift.getAngle();
+        //if (revPotVoltage > 0) {
+        System.out.println("Forklift wanted is " + stick.getZ() + 
+                ". Forklift is currently at " + revPotVoltage);
         //}
         
-        if (stick.getRawButton(10)) {
+        if (stick.getRawButton(2)) {
             target = loadHeight;
             target += stick.getZ();
-        } else if (stick.getRawButton(11)) {
+        } else if (stick.getRawButton(3)) {
             target = shootHeight;
             target += stick.getZ()/2;
         } 
              
-        if (liftVoltage > target + threshold) {
+        if (revPotVoltage > target + threshold) {
             // Go down
             revolutionLift.moveDown(1);
             System.out.println("Going Down. Target: " + target);
             SmartDashboard.putNumber("Revolution target", target);
-        } else if (liftVoltage < target - threshold) {
+        } else if (revPotVoltage < target - threshold) {
             System.out.println("Going Up. Target: " + target);
             // Go up
             revolutionLift.moveUp(1);
         } else {
             revolutionLift.moveUp(0);
         }
-        */
+        
         //revolutionLift.moveUp(speed);
-        if (stick.getRawButton(3)){
-            revolutionLift.moveDown(1);
+        /*if (stick.getRawButton(3)){
+            BallHolder.moveDown(1);
         } else if (stick.getRawButton(2)){
-            revolutionLift.moveUp(1);
-        }
+            BallHolder.moveUp(1);
+        }*/
     }
 
     // Make this return true when this Command no longer needs to run execute()

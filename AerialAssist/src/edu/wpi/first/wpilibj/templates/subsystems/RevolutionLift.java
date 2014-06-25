@@ -6,6 +6,7 @@
 
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,6 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class RevolutionLift extends Subsystem {
     Talon arm = new Talon(9);
+    AnalogChannel revPot = new AnalogChannel(1);
     protected void initDefaultCommand() {
         //throw new java.lang.UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         
@@ -33,6 +35,9 @@ public class RevolutionLift extends Subsystem {
 
     public void armStop() {
         arm.set(0);
+    }
+    public double getAngle() {
+        return revPot.getVoltage();
     }
 
 }
