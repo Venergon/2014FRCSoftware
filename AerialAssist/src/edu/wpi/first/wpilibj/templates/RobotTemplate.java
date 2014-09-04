@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.templates.commands.AutoCommand;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
 import edu.wpi.first.wpilibj.templates.commands.NetworkTableUse;
@@ -46,7 +47,7 @@ public class RobotTemplate extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         System.out.println("Initialisation complete");
-        autonomousCommand = new ExampleCommand();
+        autonomousCommand = new AutoCommand();
 
         // Initialize all subsystems
         CommandBase.init();
@@ -66,10 +67,10 @@ public class RobotTemplate extends IterativeRobot {
 
     public void teleopInit() {
                 Joystick leftStick = new Joystick (1);
-        //Joystick rightStick = new Joystick (2);
-        //TwoStickArcadeCommand drive = new TwoStickArcadeCommand 
-        //        (leftStick, rightStick);
-        OneStickArcadeCommand drive = new OneStickArcadeCommand(leftStick);
+                Joystick rightStick = new Joystick (2);
+        TwoStickArcadeCommand drive = new TwoStickArcadeCommand(rightStick, leftStick);
+        autonomousCommand.cancel();
+        //OneStickArcadeCommand drive = new OneStickArcadeCommand(leftStick);
         drive.start();
         //NetworkTableUse table = new NetworkTableUse ();
         //table.start();
@@ -77,7 +78,7 @@ public class RobotTemplate extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        autonomousCommand.cancel();
+        
     }
 
     /**

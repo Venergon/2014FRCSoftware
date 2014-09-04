@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author FRC
  */
 public class RevolutionLift extends Subsystem {
-    Talon arm = new Talon(9);
+    Talon arm = new Talon(6);
     AnalogChannel revPot = new AnalogChannel(1);
     protected void initDefaultCommand() {
         //throw new java.lang.UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

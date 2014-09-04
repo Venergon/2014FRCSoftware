@@ -32,13 +32,13 @@ public class AutoCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        while((timer.get() < 6) && ((networkTableUse.shapeXAxis() < 250) || (networkTableUse.shapeXAxis() > 350)) ){
+        /*while((timer.get() < 6) && ((networkTableUse.shapeXAxis() < 250) || (networkTableUse.shapeXAxis() > 350)) ){
             
         }
         /*while (kickerMechanism.isBottomSwitchSet() == false) {
             kickerMechanism.kick(.25);
         }*/
-        while (state == 1) { //Gain momentum so that the hammer can swing up to the top
+        /*while (state == 1) { //Gain momentum so that the hammer can swing up to the top
             if (kickerMechanism.isBottomSwitchSet()== true) {
                 state = 2; 
                 System.out.println("State 2");
@@ -84,12 +84,14 @@ public class AutoCommand extends CommandBase {
             }
             kickerMechanism.kick(0);
         }
-        kickerMechanism.kick(0);
-        timer.reset();
-        timer.start();
-        while(timer.get() < 2) {
-            driveSubsystem.tankDrive (1,1);
-        }
+        kickerMechanism.kick(0); */
+        //timer.reset();
+        //timer.start();
+        if(timer.get() < 2) {
+            driveSubsystem.tankDrive (.5,.5);
+        } else {
+            driveSubsystem.tankDrive(0, 0);
+        }    
     }
 
     // Make this return true when this Command no longer needs to run execute()

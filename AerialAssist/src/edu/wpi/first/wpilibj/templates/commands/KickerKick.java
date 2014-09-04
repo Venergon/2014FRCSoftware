@@ -22,6 +22,7 @@ public class KickerKick extends CommandBase {
     
     public KickerKick(double speed) {
         requires (kickerMechanism);
+        
         this.speed = speed;
         timer = new Timer();
         // Use requires() here to declare subsystem dependencies
@@ -37,6 +38,12 @@ public class KickerKick extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        /*(if (speed == 1){
+            kickerMechanism.kick(.25);            
+        }
+        if (speed == -1){
+            kickerMechanism.kick(-.25);
+        } */
         if (state == 1) { //Gain momentum so that the hammer can swing up to the top
             if (kickerMechanism.isBottomSwitchSet()== true) {
                 state = 2; 
@@ -51,6 +58,9 @@ public class KickerKick extends CommandBase {
                 SmartDashboard.putNumber("Kicker State", state);
                 timer.reset();
                 timer.start();
+            }
+            if (kickerMechanism.isBottomSwitchSet() == true){
+                
             }
             kickerMechanism.liftUp(0.5);
         } else if (state == 3) {

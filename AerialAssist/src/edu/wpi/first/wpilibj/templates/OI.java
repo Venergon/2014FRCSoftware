@@ -6,11 +6,13 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.templates.commands.ArcadeCommand;
+import edu.wpi.first.wpilibj.templates.commands.HardKick;
 import edu.wpi.first.wpilibj.templates.commands.RevolutionUp;
 import edu.wpi.first.wpilibj.templates.commands.HolderMove;
 import edu.wpi.first.wpilibj.templates.commands.InBallinCommand;
 import edu.wpi.first.wpilibj.templates.commands.KickerKick;
 import edu.wpi.first.wpilibj.templates.commands.OneStickArcadeCommand;
+import edu.wpi.first.wpilibj.templates.commands.SoftKick;
 import edu.wpi.first.wpilibj.templates.commands.TankCommand;
 import edu.wpi.first.wpilibj.templates.commands.TurnToTarget;
 import edu.wpi.first.wpilibj.templates.commands.TwoStickArcadeCommand;
@@ -56,38 +58,42 @@ public class OI {
     Button y             = new JoystickButton(xbox,       4);
     Button lb            = new JoystickButton(xbox,       5);
     Button rb            = new JoystickButton(xbox,       6);
-    
+    Button L3            = new JoystickButton(xbox,       9);
+    Button R3            = new JoystickButton(xbox,       10);
     
     
     public OI () {
         button1.whileHeld(new InBallinCommand(stickLeft, stickRight));
-        button2.whileHeld(new KickerKick(stickLeft.getZ()/4));
+        //button2.whileHeld(new KickerKick(stickLeft.getZ()/4));
         button3.whenPressed(new TankCommand (stickLeft, stickRight));
         button4.whenPressed(new OneStickArcadeCommand(stickLeft));
-        button5.whenPressed(new TwoStickArcadeCommand(stickLeft, stickRight));
+        button5.whenPressed(new TwoStickArcadeCommand(stickRight, stickLeft));
         //button6.whileHeld();
         //button7.whileHeld();
         //button8.whenPressed(());
-        button9.whileHeld(new TurnToTarget(stickLeft));
+        //.whileHeld(new TurnToTarget(stickLeft));
         //button10.whileHeld();
         //button11.whileHeld();
         rightButton1.whileHeld(new InBallinCommand (stickLeft, stickRight));
-        rightButton2.whenPressed(new RevolutionUp(stickRight));
-        rightButton3.whenPressed(new RevolutionUp(stickRight));
-        rightButton4.whenPressed(new HolderMove(stickRight));
-        rightButton5.whenPressed(new HolderMove(stickRight));
+        //rightButton2.whileHeld(new RevolutionUp(stickRight));
+        //rightButton3.whileHeld(new RevolutionUp(stickRight));
+        //rightButton4.whileHeld(new HolderMove(stickRight));
+        //rightButton5.whileHeld(new HolderMove(stickRight));
         //rightButton6.whenPressed();
         //rightButton7.whenPressed();
         //rightButton8.whenPressed(());
         //rightButton9.whenPressed(());
         //rightButton10.whenPressed(());
         //rightButton11.whenPressed(());
-        //a.whenPressed(());
-        //b.whenPressed(());
-        //x.whenPressed(());
-        //y.whenPressed(());
-        //lb.whenPressed(());
-        //rb.whenPressed(());
+        a.whileHeld(new RevolutionUp (xbox));
+        b.whileHeld(new HolderMove (xbox));
+        x.whileHeld(new HolderMove (xbox));
+        y.whileHeld(new RevolutionUp (xbox));
+        lb.whileHeld(new SoftKick(-1));
+        rb.whileHeld(new SoftKick(1));
+        L3.whileHeld(new HardKick(-1));
+        R3.whileHeld(new HardKick(1));
+        
     }
     // Another type of button you can create is a DigitalIOButton, which is
     // a button or switch hooked up to the cypress module. These are useful if

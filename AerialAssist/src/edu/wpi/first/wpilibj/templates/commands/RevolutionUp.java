@@ -40,11 +40,13 @@ public class RevolutionUp extends CommandBase {
     protected void execute() {
         double revPotVoltage = revolutionLift.getAngle();
         //if (revPotVoltage > 0) {
-        System.out.println("Forklift wanted is " + stick.getZ() + 
-                ". Forklift is currently at " + revPotVoltage);
+        System.out.println("Revolution wanted is " + stick.getZ() + 
+                ". Revolution is currently at " + revPotVoltage);
+        SmartDashboard.putNumber ("Revolution Current Voltage", revPotVoltage);
+        SmartDashboard.putNumber ("Revolution Wanted Voltage", target);
         //}
         
-        if (stick.getRawButton(2)) {
+        /*if (stick.getRawButton(2)) {
             target = loadHeight;
             target += stick.getZ();
         } else if (stick.getRawButton(3)) {
@@ -63,14 +65,14 @@ public class RevolutionUp extends CommandBase {
             revolutionLift.moveUp(1);
         } else {
             revolutionLift.moveUp(0);
-        }
+        }*/
         
         //revolutionLift.moveUp(speed);
-        /*if (stick.getRawButton(3)){
-            BallHolder.moveDown(1);
-        } else if (stick.getRawButton(2)){
-            BallHolder.moveUp(1);
-        }*/
+        if (stick.getRawButton(4)){
+            revolutionLift.moveUp(1);
+        } else if (stick.getRawButton(1)){
+            revolutionLift.moveDown(1);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

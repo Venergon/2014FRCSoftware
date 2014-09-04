@@ -8,6 +8,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -16,8 +17,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class KickerMechanism extends Subsystem {
     Talon kicker1 = new Talon (7); 
     Talon kicker2 = new Talon (8);
-    DigitalInput bottomSwitch = new DigitalInput (11);
-    DigitalInput topSwitch = new DigitalInput (4);
+    DigitalInput bottomSwitch = new DigitalInput (1);
+    DigitalInput topSwitch = new DigitalInput (2);
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -38,11 +39,13 @@ public class KickerMechanism extends Subsystem {
     public boolean isBottomSwitchSet (){
         System.out.print("Bottom switch is ");
         System.out.println(bottomSwitch.get());
+        SmartDashboard.putBoolean("Finishing Switch", bottomSwitch.get());
         return bottomSwitch.get();
     }
     public boolean isTopSwitchSet () {
         System.out.print("Top switch is ");
         System.out.println(topSwitch.get());
+        SmartDashboard.putBoolean("Starting Switch", topSwitch.get());
         return topSwitch.get();
     }
 }

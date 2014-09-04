@@ -36,19 +36,21 @@ public class HolderMove extends CommandBase {
         } */
         double holdPotVoltage = ballHolder.getAngle();
         //if (holdPotVoltage > 0) {
-        System.out.println("Forklift wanted is " + stick.getZ() + 
-                ". Forklift is currently at " + holdPotVoltage);
+        System.out.println("Ball Holder wanted is " + stick.getZ() + 
+                ". Ball Holder is currently at " + holdPotVoltage);
+        SmartDashboard.putNumber ("Ball Holder Current Voltage", holdPotVoltage);
+        SmartDashboard.putNumber ("Ball Holder Wanted Voltage", target);
         //}
         
-        if (stick.getRawButton(2)) {
+        /*if (stick.getRawButton(4)) {
             target = loadHeight;
             target += stick.getZ();
-        } else if (stick.getRawButton(3)) {
+        } else if (stick.getRawButton(5)) {
             target = shootHeight;
             target += stick.getZ()/2;
-        } 
+        } */
              
-        if (holdPotVoltage > target + threshold) {
+        /*if (holdPotVoltage > target + threshold) {
             // Go down
             ballHolder.moveDown(1);
             System.out.println("Going Down. Target: " + target);
@@ -59,6 +61,11 @@ public class HolderMove extends CommandBase {
             ballHolder.moveUp(1);
         } else {
             ballHolder.moveUp(0);
+        }*/
+        if (stick.getRawButton(2)){
+            ballHolder.moveUp(1);
+        } else if (stick.getRawButton(3)){
+            ballHolder.moveDown(1);
         }
     }
 

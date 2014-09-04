@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author FRC
  */
 public class RevolutionWheel extends Subsystem {
-    Talon armWheels = new Talon (6);
+    Talon armWheels = new Talon (9);
     
     public void intakeIn(double speed) {
         armWheels.set(speed);
